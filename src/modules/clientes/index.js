@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect, useContext, Fragment } from 'react';
-import Axios from "axios";
 import AddIcon from '@material-ui/icons/Add';
 import InfiniteLoaderBar from '../../components/InfiniteLoaderBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,17 +12,7 @@ import {
   Grid,
   Dialog,
   DialogContent,
-  Button,
-  TextField,
-  FormControlLabel,
-  Switch,
-  Divider,
-  FormGroup,
-  Checkbox,
-  Icon,
   Typography,
-  CircularProgress,
-  Popover,
   makeStyles
 } from '@material-ui/core';
 import Edit from './edit';

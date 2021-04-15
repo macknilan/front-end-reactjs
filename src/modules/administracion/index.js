@@ -13,17 +13,7 @@ import {
   Grid,
   Dialog,
   DialogContent,
-  Button,
-  TextField,
-  FormControlLabel,
-  Switch,
-  Divider,
-  FormGroup,
-  Checkbox,
-  Icon,
   Typography,
-  CircularProgress,
-  Popover,
   makeStyles
 } from '@material-ui/core';
 import Edit from './edit';
@@ -102,7 +92,7 @@ export default function Clientes(props) {
           </Grid>
       }
       {
-        data &&
+        Object.keys(data).length>0 &&
         <Fragment>
           <Grid container spacing={2}>
             {data.map((resource) => {

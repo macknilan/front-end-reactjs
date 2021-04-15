@@ -20,6 +20,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BuildIcon from '@material-ui/icons/Build';
 import { withStyles } from '@material-ui/core/styles';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 import FaceIcon from '@material-ui/icons/Face';
 const drawerWidth = 240;
@@ -298,6 +299,16 @@ export default function ButtonAppBar({props, children }) {
                     }}
                     active={activeMenuItem == 'Administracion' ? true : false}
                     icon={<BuildIcon />}
+                />
+            </Link>
+            <Link href="/">
+                <MenuItem
+                    item={'Cerrar Sesion'}
+                    onClick={() => {
+                        sessionStorage.setItem('token', JSON.stringify(false))
+                    }}
+                    active={activeMenuItem == 'Cerrar' ? true : false}
+                    icon={<MeetingRoomIcon />}
                 />
             </Link>
         </List>

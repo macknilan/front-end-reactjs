@@ -25,7 +25,7 @@ function Form(props) {
     const [data, setData] = useState(props.data);
     const [name, setName] = useState(data.resourceData.Nombre != '' ? data.resourceData.Nombre : '');
     const [contrasena, setContrasena] = useState(data.resourceData.Contrasena != '' ? data.resourceData.Contrasena : '');
-    const [status, setStatus] = useState(data.resourceData.status != '' ? data.resourceData.status : '');
+    const [status, setStatus] = useState(data.resourceData.Status != '' ? data.resourceData.Status : '');
 
     const classes = useStyles();
     const [mensaje, setMensaje] = useState("");
@@ -71,34 +71,26 @@ function Form(props) {
                 body: dataString
             }
             )
-            .then((res) => res.json())
+            .then((res) => res)
             .then(
                 (result) => {
-                  if(!data.storeUrlMethod=='PUT'){
-                    if(Array.isArray(result)){
-                      setMensaje('error al aguardar')
-                      setAlerta(true);
-                      return;
-                    }else{
-                      setMensaje(result)
-                      setAlerta(true);
-                      setLoading(false);
-                      handleClosess();
-                      handlesearch();
-                      return;
-                    }
-                  }else{
-                    setMensaje('Se aguardo el registro')
-                    setAlerta(true);
-                    setLoading(false);
-                    handleClosess();
-                    handlesearch();
-                    return;
-                  }
+                  setName('')
+                  setContrasena('')
+                  setStatus('')
+                  setMensaje('Se aguardo el registro')
+                  setAlerta(true);
+                  setLoading(false);
+                  handleClosess();
+                  handlesearch();
                 },
-                (error) => {}
+                (error) => {
+                  setMensaje('error al aguardar el registro'+error)
+                  setAlerta(true);
+                  setLoading(false);
+                }
             )});
     } catch (err) {}
+    
  };
   const handleClosess = () => {
     props.handleClose();
